@@ -1,6 +1,6 @@
 # org.pilosus/clj-gol
 
-Conway's Game of Life: simple,
+Conway's Game of Life: simple, terminal based implementation in Clojure.
 
 ## Installation
 
@@ -24,11 +24,25 @@ when passing in a path to a seed file!):
 Run the project directly, via `:main-opts` (`-m org.pilosus.clj-gol`):
 
     $ clojure -M:run-m
-    Hello, World!
 
 Run the project, overriding the name to be greeted:
 
     $ clojure -M:run-m resources/seeds/infinite.txt 100 green white
+
+
+## Options
+
+`:seed` is a path to a text file with the seed. Seed must be
+represented in a matrix form. Rows are separated by a new line
+character. Elements are separated by a single whitespace. Live cells
+represented by `1`, dead cells by `0`.
+
+`:delay` is a number of milliseconds before iterations.
+
+`:color-live` and `:color-dead` is a color name for live cells and
+dead cells respectively. Can be on of the following values: `:black`,
+`:blue`, `:cyan`, `:green`, `:magenta`, `:red`, `:reset`, `:white`,
+`:yellow`.
 
 ## Development
 
