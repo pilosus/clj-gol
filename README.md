@@ -2,6 +2,8 @@
 
 Conway's Game of Life: simple, terminal based implementation in Clojure.
 
+![screencast](https://blog.pilosus.org/images/gol.gif)
+
 ## Installation
 
 Download from https://github.com/pilosus/clj-gol
