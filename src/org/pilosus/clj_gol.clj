@@ -68,22 +68,22 @@
 (defn evolve-board
   "Return a new board with the new generation of cells"
   [board]
-  (loop [rows (map-indexed vector board)
-         result []]
-    (if rows
-      (let [[row-idx row] (first rows)
-            evolved-row
-            (into
-             []
-             (loop [cols (map-indexed vector row)
-                    next-gen []]
-               (if cols
-                 (let [[col-idx _] (first cols)
-                       evolved-cell (next-cell board row-idx col-idx)]
-                   (recur (next cols) (conj next-gen evolved-cell)))
-                 next-gen)))]
-        (recur (next rows) (conj result evolved-row)))
-      result)))
+  (reduce
+   ;; process indexed rows first
+   (fn [init-val coll-val]
+     (let [[row-idx row] coll-val]
+       (conj
+        init-val
+        (reduce
+         ;; process pairs [[col-idx element]]
+         (fn [init-val-inner coll-val-inner]
+           (let [[col-idx _] coll-val-inner
+                 next-gen (next-cell board row-idx col-idx)]
+             (conj init-val-inner next-gen)))
+         [] ;; init-val-inner
+         (map-indexed vector row)))))
+   [] ;; init-val
+   (map-indexed vector board)))
 
 ;; Representation
 
