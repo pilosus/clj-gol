@@ -1,15 +1,22 @@
 {:paths ["src" "resources"]
  :deps {org.clojure/clojure {:mvn/version "1.11.1"}}
  :aliases
- {:run-m {:main-opts ["-m" "org.pilosus.clj-gol"]
+ {;;clj -M:run-m
+  :run-m {:main-opts ["-m" "org.pilosus.clj-gol"]
           :exec-fn org.pilosus.clj-gol/-main}
+  ;; clj -X:run-x
+  ;; clj -X:run-x :key1 val1 :key2 val2
   :run-x {:ns-default org.pilosus.clj-gol
           :exec-fn run-game
           :exec-args {:delay 333}}
+  ;; clojure -T:build [test|ci]
   :build {:deps {io.github.clojure/tools.build
                  {:git/tag "v0.9.2" :git/sha "fe6b140"}}
           :ns-default build}
+  ;; clj -X:test
   :test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
                       io.github.cognitect-labs/test-runner
-                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
+         :main-opts ["-m" "cognitect.test-runner"]
+         :exec-fn cognitect.test-runner.api/test}}}
