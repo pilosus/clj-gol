@@ -1,8 +1,9 @@
 # org.pilosus/clj-gol
 
 Conway's Game of Life: simple, terminal based implementation in Clojure.
+See original Python implementation [here](https://github.com/pilosus/gol).
 
-![screencast](https://blog.pilosus.org/images/gol.gif)
+![screencast](https://blog.pilosus.org/images/gol.webp)
 
 ## Installation
 
@@ -65,4 +66,3 @@ Run that uberjar:
 Copyright © 2023 Vitaly Samigullin
 
 See [LICENSE](https://github.com/pilosus/clj-gol/tree/main/LICENSE)
-
